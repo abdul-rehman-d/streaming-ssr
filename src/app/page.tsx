@@ -46,6 +46,9 @@ async function Item({
   )
 }
 
+// trying to stop vercel's default caching
+export const fetchCache = 'force-no-store';
+
 export default function Home() {
   return (
     <div className="flex min-h-[100svh]">
