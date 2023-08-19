@@ -13,3 +13,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Screenshots
 ![Screenshot of app](./screenshots/screen1.png "I use arch btw. This is my sister's laptop.")
+![Demo of app](./screenshots/demo.gif "Working demo.")
