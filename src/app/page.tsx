@@ -27,7 +27,12 @@ function Navbar () {
   )
 }
 
-const delay = async (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+const delay = async (seconds: number) => {
+  return fetch(
+    `https://httpbin.org/delay/${seconds}`,
+    { cache: 'no-store' }
+  )
+}
 
 async function Item({
   humanIdx,
@@ -36,12 +41,15 @@ async function Item({
   humanIdx: number;
   idx: number;
 }) {
-  await delay(idx * 1000)
+  performance.mark(`item-${idx}-start`)
+  await delay(idx)
+  performance.mark(`item-${idx}-end`)
+  const { duration } = performance.measure(`item-${idx}`, `item-${idx}-start`, `item-${idx}-end`)
 
   return (
     <div className='flex flex-col'>
       <span>item {humanIdx}</span>
-      <span>{`${idx * 1000}ms`}</span>
+      <span>{`${duration.toFixed(2)} ms`}</span>
     </div>
   )
 }
